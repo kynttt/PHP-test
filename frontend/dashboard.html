@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .dashboard-container {
+            text-align: center;
+        }
+        .logout-btn {
+            background: #dc3545;
+            margin-top: 1rem;
+        }
+        .logout-btn:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container dashboard-container">
+        <h1>Welcome to Dashboard</h1>
+        <p>You are successfully logged in!</p>
+        <p>User ID: <span id="userId"></span></p>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+            window.location.href = 'login.html';
+        }
+        
+        // Display user ID
+        document.getElementById('userId').textContent = userId;
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('userId');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html> 
